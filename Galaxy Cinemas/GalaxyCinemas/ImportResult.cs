@@ -21,7 +21,7 @@ namespace GalaxyCinemas
 				return errorMessages;
 			}
 		}
-       /*constructor*/
+       /*constructor 2*/
 		public ImportResult(){
 			TotalRows = 0;
 			ImportedRows = 0;
