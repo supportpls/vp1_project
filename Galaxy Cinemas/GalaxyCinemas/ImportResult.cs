@@ -10,13 +10,15 @@ namespace GalaxyCinemas
 		public int TotalRows { set; get;}
 		public int ImportedRows{ set; get;}
 		public int FailedRows{ set; get;}
-		private List<String> errorMessages;
+		private List<String> errorMessages {set;get;}
 
+
+		
 		public List<String> ErrorMessages 
 		{
 			get 
 			{
-				errorMessages;
+				return errorMessages;
 			}
 		}
        
@@ -24,13 +26,8 @@ namespace GalaxyCinemas
 			TotalRows = 0;
 			ImportedRows = 0;
 			FailedRows = 0;
-			errorMessages.Clear;
+			errorMessages.Clear();
 
-		
 		}
-
-      
-
-       
     }
 }
