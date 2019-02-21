@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="GalaxyCinemas/GalaxyCinemas.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GalaxyCinemas/MovieImporter.cs">
+    <Files>
+      <File FileName="GalaxyCinemas/MovieImporter.cs" Line="110" Column="16" />
+      <File FileName="GalaxyCinemas/BaseImporter.cs" Line="40" Column="23" />
+      <File FileName="GalaxyCinemas/Data Layer/DataLayer.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
