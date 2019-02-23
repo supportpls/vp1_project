@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.IO;
+using Common;
 
 namespace GalaxyCinemas
 {
 	public class MovieImporter : BaseImporter
 
     {
+        public MovieImporter(string filename) : base(filename)
+        {
+        }
+
         /// <summary>
         /// Import movie file. Filename has been provided in the constructor.
         /// </summary>
@@ -26,7 +31,7 @@ namespace GalaxyCinemas
                 using (StreamReader reader = File.OpenText(fileName))
                 {
                     // Read file  using ReadToEnd
-					fileDate = reader.ReadToEnd();
+					fileData = reader.ReadToEnd();
                    
                 }
                 string[] lines = fileData.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n'); // To deal with Windows, Mac and Linux line endings the same.
@@ -34,7 +39,7 @@ namespace GalaxyCinemas
                 // Check if first line is column names.
 				string[] columns = firstLine.Split(',');
 				if (columns.Length==2){
-					if(columns[0].Trim.ToLower=="movieid" && columns[1].Trim.ToLower=="title"){
+					if(columns[0].ToLower().Trim()=="movieid" && columns[1].Trim().ToLower()=="title"){
 						lines[0]="";}
 				}
                 // Line count and line numbers to allow progress tracking.
@@ -80,8 +85,8 @@ namespace GalaxyCinemas
                             results.ErrorMessages.Add(string.Format("Line {0}: MovieID is not a number.", lineNum));
                             continue;
                         }
-						string movieTitle = columns[1].Trim;
-						if (String.IsNullOrEmpty(movieTitle))
+						string title = columns[1].Trim();
+						if (String.IsNullOrEmpty(title))
 						{
 							results.FailedRows++;
 							results.ErrorMessages.Add(string.Format("Line {0}: Movie Title is not present.", lineNum));
@@ -100,25 +105,24 @@ namespace GalaxyCinemas
                             DataLayer.DataLayer.UpdateMovie(movieToUpdate);
                         }
 						results.ImportedRows=results.ImportedRows++;
-
-                       
-                    }
-                    
-
-			finally
-					{
-						lineNum++;
-					}
-					   
+                        }
+                        finally
+		    			{
+			    			lineNum++;
+				    	}
+				    }
+                }   
+                catch (IOException)
+                {
+                results.ErrorMessages.Add(string.Format("IO Error - could not read file."));
+                }
+                catch (Exception)
+                {
+                results.ErrorMessages.Add(string.Format("Other Error - could not read file."));    
+                }
+                finally{
+                    RaiseCompleted(results);
+                }
             }
-        }
-
-
-
-
-		public MovieImporter (string filename) : base (filename)
-		{
-			
-		}
     }
 }

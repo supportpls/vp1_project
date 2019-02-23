@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.IO;
+using Common;
 
 namespace GalaxyCinemas
 {
@@ -19,7 +20,7 @@ namespace GalaxyCinemas
         public override void Import(object o)
         {
             // Initialise progress to zero for progress bar.
-            Progress = 0f;
+            float progress = 0f;
             ImportResult results = new ImportResult();
             try
             {
@@ -30,10 +31,16 @@ namespace GalaxyCinemas
                     fileData = reader.ReadToEnd();
                 }
                 string[] lines = fileData.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n'); // To deal with Windows, Mac and Linux line endings the same.
-
+                string firstLine = lines[0];
                 // Check if first line is column names.
-                
-
+                string[] columns = firstLine.Split(',');
+				if (columns.Length==4){
+					if(columns[0].ToLower().Trim()=="sessionid" 
+                    && columns[1].Trim().ToLower()=="movieid"
+                    && columns[1].Trim().ToLower()=="sessiondate"
+                    && columns[1].Trim().ToLower()=="cinemanumber"){
+						lines[0]="";}
+				}
                 // Line count and line numbers to allow progress tracking.
                 int lineCount = lines.Length;
                 int lineNum = 1;
@@ -55,15 +62,17 @@ namespace GalaxyCinemas
                         Thread.Sleep(500);
 
                         // Update progress of import.
-                       
-                        
-
+                        progress=lineNum/lineCount;
+						RaiseProgressChanged();                  
 
                         // Skip blank lines
-                       
+						if(String.IsNullOrEmpty(line)){
+							continue;}
+						else{
+							results.TotalRows=results.TotalRows++;}                       
 
                         // Break up line by commas, each item in array will be one column.
-                        
+                        columns = line.Split(',');                        
                         if (columns.Length != 4)
                         {
                             results.FailedRows++;
@@ -97,12 +106,15 @@ namespace GalaxyCinemas
                         }
 
                         // Check session ID.
-
-
-
-
+                        int sessionID = 0;
+                        if (!int.TryParse(columns[1].Trim(), out sessionID))
+                        {
+                            results.FailedRows++;
+                            results.ErrorMessages.Add(string.Format("Line {0}: SessionID is not a number.", lineNum));
+                            continue;
+                        }
                         // Check cinema number.
-                        
+                        if ()                        
 
 
 
