@@ -122,21 +122,18 @@ namespace GalaxyCinemas
                         }
                    
                         // Insert/update DB if okay.
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
+                        Session sessionToUpdate =  DataLayer.DataLayer.GetSessionByID(sessionID);
+                        if (sessionToUpdate==null){
+                            Session sessionToAdd = new Session() {SessionID =sessionID, MovieID = movieID, SessionDate = sessionDate, CinemaNumber = cinemaNumber};
+                            DataLayer.DataLayer.AddSession(sessionToAdd);
+                        }
+                        else{
+                            sessionToUpdate.MovieID = movieID;
+                            sessionToUpdate.SessionDate = sessionDate;
+                            sessionToUpdate.CinemaNumber = cinemaNumber;
+                            DataLayer.DataLayer.UpdateSession(sessionToUpdate);
+                            }
+                        results.ImportedRows=results.ImportedRows++;
                     }
                     catch (System.Data.Common.DbException dbEx)
                     {
