@@ -114,15 +114,13 @@ namespace GalaxyCinemas
                             continue;
                         }
                         // Check cinema number.
-                        /*test comment*/
-                        if ()                        
-
-
-
-
-
-
-
+                        byte cinemaNumber = 0;
+                        if (!byte.Parse(columns[4].Trim(), out cinemaNumber)){
+                            results.FailedRows++;
+                            results.ErrorMessages.Add(string.Format("Line {0}: CinemaNumber is not a byte type.", lineNum));
+                            continue;
+                        }
+                   
                         // Insert/update DB if okay.
                         
 
