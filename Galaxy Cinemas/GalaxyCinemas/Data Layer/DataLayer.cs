@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data;
+using Common;
 
 namespace GalaxyCinemas.DataLayer
 {
@@ -31,20 +32,26 @@ namespace GalaxyCinemas.DataLayer
         /// </summary>
         public static List<Movie> GetAllMovies()
         {
-           
-
-
-
-
-
-
-
-
-
-
-
-
-            return movies;
+            List<Movie> movies = new List<Movie>();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                string sql = @"select * from [Movie]";
+                using (SqlCommand command = new SqlCommand(sql, conn))
+                {
+                  using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                       while (reader.Read())
+                        {
+                            Movie movie = new Movie();
+                            movie.MovieID = reader.GetInt32(0);
+                            movie.Title = reader.GetString(1);
+                            movies.Add(movie);
+                        }
+                    }
+                }
+            }
+           return movies;
         }
 
 
@@ -168,20 +175,33 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
         /// </summary>
         public static List<Session> GetAllSessionsInTheFuture()
         {
-            
+            List<Session> sessions = new List<Session>();
+            DateTime date = DateTime.Today;
 
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                string sql = @"select SessionID, MovieID, SessionDate, CinemaNumber
+                from [Session]
+                where SessionDate >= @startDate";
+                using (SqlCommand command = new SqlCommand(sql, conn))
+                {
+                    command.Parameters.AddWithValue("startDate", date);
 
-
-
-
-
-
-
-
-
-
-
-
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Session session = new Session();
+                            session.SessionID = reader.GetInt32(0);
+                            session.MovieID = reader.GetInt32(1);
+                            session.SessionDate = reader.GetDateTime(2);
+                            session.CinemaNumber = reader.GetByte(3);
+                            sessions.Add(session);
+                        }
+                    }
+                }
+            }
             return sessions;
         }
 
@@ -190,7 +210,31 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
         /// </summary>
         public static Session GetSessionByID(int sessionID)
         {
-           
+           Session session = new Session();
+
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                string sql = @"select SessionID, MovieID, SessionDate, CinemaNumber
+                from [Session]
+                where SessionID >= @sessionID";
+                using (SqlCommand command = new SqlCommand(sql, conn))
+                {
+                    command.Parameters.AddWithValue("sessionID", sessionID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            session.SessionID = reader.GetInt32(0);
+                            session.MovieID = reader.GetInt32(1);
+                            session.SessionDate = reader.GetDateTime(2);
+                            session.CinemaNumber = reader.GetByte(3);
+                            sessions.Add(session);
+                        }
+                    }
+                }
+            }
 
 
 
@@ -198,11 +242,15 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
 
 
 
+            if(true) {
+                return session;
 
+                }
 
-
-
+            
+            else {
             return null;
+                }
         }
 
         /// <summary>
