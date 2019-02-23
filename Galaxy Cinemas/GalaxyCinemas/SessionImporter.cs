@@ -114,6 +114,7 @@ namespace GalaxyCinemas
                             continue;
                         }
                         // Check cinema number.
+                        /*test comment*/
                         if ()                        
 
 
