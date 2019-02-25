@@ -224,33 +224,23 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
-                        {
-                            session.SessionID = reader.GetInt32(0);
-                            session.MovieID = reader.GetInt32(1);
-                            session.SessionDate = reader.GetDateTime(2);
-                            session.CinemaNumber = reader.GetByte(3);
-                            sessions.Add(session);
-                        }
+						if (reader.HasRows) {
+							session.SessionID = reader.GetInt32 (0);
+							session.MovieID = reader.GetInt32 (1);
+							session.SessionDate = reader.GetDateTime (2);
+							session.CinemaNumber = reader.GetByte (3);
+							return session;
+						} 
+						else
+						{
+							return null;						
+						}
+
                     }
                 }
             }
 
 
-
-
-
-
-
-            if(true) {
-                return session;
-
-                }
-
-            
-            else {
-            return null;
-                }
         }
 
         /// <summary>
@@ -278,17 +268,21 @@ values (@movieID, @title)";
         /// </summary>
         public static void AddSession(Session session)
         {
-           
+			using (SqlConnection conn = new SqlConnection(ConnectionString))
+			{
+				conn.Open();
+				string sql = @"insert into [Session] (SessionID, MovieID, SessionDate, Cinemanumber)
+values (@msessionID, @movieID, @sessionDate, @cinemaNumber)";
+				using (SqlCommand command = new SqlCommand(sql, conn))
+				{
+					command.Parameters.AddWithValue("sessionID", session.SessionID);
+					command.Parameters.AddWithValue("movieID", session.MovieID);
+					command.Parameters.AddWithValue("sessionDate", session.SessionDate);
+					command.Parameters.AddWithValue("cinemaNumber", session.CinemaNumber);
 
-
-
-
-
-
-
-
-
-
+					command.ExecuteNonQuery();
+				}
+			}
         }
 
         /// <summary>
@@ -299,9 +293,7 @@ values (@movieID, @title)";
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                string sql = @"update [Movie]
-set Title=@title
-where MovieID=@movieID";
+                string sql = @"update [Movie] set Title=@title where MovieID=@movieID";
                 using (SqlCommand command = new SqlCommand(sql, conn))
                 {
                     command.Parameters.AddWithValue("title", movie.Title);
@@ -317,18 +309,21 @@ where MovieID=@movieID";
         /// </summary>
         public static void UpdateSession(Session session)
         {
-           
+			using (SqlConnection conn = new SqlConnection(ConnectionString))
+			{
+				conn.Open();
+				string sql = @"update [Session] set MovieID=@movieID, SessionDate = @sessionDate, Cinemanumber = @cinemaNumber 
+				where SessionID=@sessionID";
+				using (SqlCommand command = new SqlCommand(sql, conn))
+				{
+					command.Parameters.AddWithValue("sessionID", session.SessionID);
+					command.Parameters.AddWithValue("movieID", session.MovieID);
+					command.Parameters.AddWithValue("sessionDate", session.SessionDate);
+					command.Parameters.AddWithValue("cinemaNumber", session.CinemaNumber);
 
-
-
-
-
-
-
-
-
-
-
+					command.ExecuteNonQuery();
+				}
+			}
         }
     }
 }
