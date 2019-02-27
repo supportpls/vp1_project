@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-
+using Common;
 using Common.Business_Objects.Booking;
 using Common.Business_Objects.Movie;
 using Common.Business_Objects.Session;
@@ -27,19 +27,23 @@ namespace GalaxyCinemas
                 foreach (FileInfo file in dir.GetFiles("Plugin*.dll"))
                 {
                     string name = Path.GetFileNameWithoutExtension(file.Name);
-                    
 
+                    Assembly assembly = Assembly.Load("name");
 
+                    var plugins = from type in assembly.GetTypes()
+                                  where typeof(ISpecialPlugin).IsAssignableFrom(type) && !type.IsInterface
+                                  select type;
 
-
-
-
-
-                }
+                    foreach (Type pluginType in plugins)
+                    {
+                       ISpecialPlugin bypassPlugin = Activator.CreateInstance(pluginType) as ISpecialPlugin;
+                        specialPlugins.Add(bypassPlugin);
+                    }
+                                                                                                          }
             }
             catch (Exception)
             {
-                
+                MessageBox.Show(this, "Error in loading of special plugins", "Init Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,11 +60,25 @@ namespace GalaxyCinemas
             idf.Show();
         }
 
-       
+  
+        private void btnExportForm_Click(object sender, EventArgs e)
+        {
+            ExportDataForm edf = new ExportDataForm();
+            edf.FormClosed += ChildFormClosed;
+            edf.Show();
+        }
 
-        
+        private void btnBooking_Click(object sender, EventArgs e)
+        {
+            BookingForm bf = new BookingForm();
+            bf.FormClosed += ChildFormClosed;
+            bf.Show();
 
-        
-        
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Galaxy Cinemas",
-    "\\Galaxy Cinemas\\GalaxyCinemas"
+    "\\Galaxy Cinemas\\Common",
+    "\\Galaxy Cinemas\\Common\\Business_Objects",
+    "\\Galaxy Cinemas\\GalaxyCinemas",
+    "\\Galaxy Cinemas\\GalaxyCinemas\\Data Layer"
   ],
-  "SelectedNode": "\\Galaxy Cinemas\\GalaxyCinemas\\ImportResult.cs",
+  "SelectedNode": "\\Galaxy Cinemas\\GalaxyCinemas\\Data Layer\\DataLayer.cs",
   "PreviewInSolutionExplorer": false
 }

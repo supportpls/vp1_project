@@ -1,0 +1,2 @@
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
