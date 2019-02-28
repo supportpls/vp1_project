@@ -45,6 +45,7 @@
             this.lblOriginalPrice = new System.Windows.Forms.Label();
             this.lblFinalPrice = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,6 @@
             this.btnSubmit.TabIndex = 0;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-          
             // 
             // cboMovie
             // 
@@ -190,11 +190,22 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(496, 343);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 27;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 393);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblFinalPrice);
             this.Controls.Add(this.lblOriginalPrice);
             this.Controls.Add(this.lblSpecialName);
@@ -236,6 +247,7 @@
         private System.Windows.Forms.Label lblOriginalPrice;
         private System.Windows.Forms.Label lblFinalPrice;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button btnBack;
     }
 }
 

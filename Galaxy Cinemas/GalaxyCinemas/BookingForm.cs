@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Common;
 
 namespace GalaxyCinemas
 {
     public partial class BookingForm : Form
     {
         // Base ticket price used for calculations
-      
-
-        
+        decimal BASETICKETPRICE = 14.0m;
+        List<ISpecialPlugin> specialPlugins = new List<ISpecialPlugin>();
+        Booking booking;
 
        
 
         public BookingForm(List<ISpecialPlugin> plugins)
         {
             // Create a Booking object. We will set the properties of this as we progress through the form, and save when the form is submitted.
-           
+            //booking = new Booking();
             // We are provided the loaded plugins from the main application because loading plugins using reflection is very expensive and should not be done often.
-           
-
-           
+            specialPlugins = plugins;
+            booking = new Booking();
+            InitializeComponent();
+                  
             
             // Populate the movies dropdown with a list of movies.
             PopulateMovies();
@@ -131,36 +133,36 @@ namespace GalaxyCinemas
         private void UpdatePrice()
         {
             // Calculate the original (full) price.
-           
+            decimal originalPrice = Decimal.Parse(txtQuantity.Text)* BASETICKETPRICE;
             // Prepare to compare original price to special prices.
-            
-          
-
-
-            
-            
-                
-               
-               
-            
+            decimal finalPrice = originalPrice;
+            booking.OriginalPrice = originalPrice;
+            String specialName = "";
             // Record pricing and special information in the Booking.
-            
+            foreach (ISpecialPlugin plugin in specialPlugins)
+            {
+                decimal currentSpecialPrice = originalPrice;
+                string currentSpecialName = specialName;
+                if(plugin.CalculateSpecial(booking, ref currentSpecialName, ref currentSpecialPrice))
+                {
 
+                    if (finalPrice > currentSpecialPrice)
+                    {
+                        finalPrice = currentSpecialPrice;
+                        specialName = currentSpecialName;
+                    }
+                }
+                booking.FinalPrice = finalPrice;
+                booking.Special = specialName;
+                booking.Discount = booking.OriginalPrice - booking.FinalPrice;
 
-
+            }
             // Display pricing and special information on the form.
-            
-
-
-
-        }
+            lblSpecialName.Text = booking.Special;
+            lblOriginalPrice.Text = booking.OriginalPrice.ToString("C");
+            lblFinalPrice.Text = booking.FinalPrice.ToString("C");
+                                         }
        
-
-
-
-        
-        
-
         #region Form validation
 
         // We set this to true to apply stricter validation, e.g. prevent continuing form submission.
@@ -256,10 +258,14 @@ namespace GalaxyCinemas
             e.Cancel = false;
         }
 
+
+
         #endregion
 
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
 
