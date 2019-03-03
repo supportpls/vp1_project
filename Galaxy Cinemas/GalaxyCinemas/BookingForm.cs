@@ -12,7 +12,7 @@ namespace GalaxyCinemas
         // Base ticket price used for calculations
         decimal BASETICKETPRICE = 14.0m;
         List<ISpecialPlugin> specialPlugins = new List<ISpecialPlugin>();
-        Booking booking;
+        Booking booking = new Booking();
 
        
 
@@ -22,7 +22,7 @@ namespace GalaxyCinemas
             //booking = new Booking();
             // We are provided the loaded plugins from the main application because loading plugins using reflection is very expensive and should not be done often.
             specialPlugins = plugins;
-            booking = new Booking();
+            /*booking = ;*/
             InitializeComponent();
                   
             
@@ -265,6 +265,19 @@ namespace GalaxyCinemas
         private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (IsFormValid() == true)
+            {
+                DataLayer.DataLayer.AddBooking(booking);
+                MessageBox.Show(this, booking.BookingNumber.ToString(), "Added Booking", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

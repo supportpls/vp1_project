@@ -57,6 +57,7 @@
             this.btnSubmit.TabIndex = 0;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // cboMovie
             // 

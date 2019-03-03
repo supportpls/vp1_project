@@ -41,12 +41,12 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dtPickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtPickerTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.blSaveLoc = new System.Windows.Forms.Label();
-            this.tboSaveLoc = new System.Windows.Forms.TextBox();
+            this.txtFileBooking = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -154,19 +154,19 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // dtPickerFrom
+            // dtpFrom
             // 
-            this.dtPickerFrom.Location = new System.Drawing.Point(58, 70);
-            this.dtPickerFrom.Name = "dtPickerFrom";
-            this.dtPickerFrom.Size = new System.Drawing.Size(200, 20);
-            this.dtPickerFrom.TabIndex = 10;
+            this.dtpFrom.Location = new System.Drawing.Point(58, 70);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(200, 20);
+            this.dtpFrom.TabIndex = 10;
             // 
-            // dtPickerTo
+            // dtpTo
             // 
-            this.dtPickerTo.Location = new System.Drawing.Point(374, 70);
-            this.dtPickerTo.Name = "dtPickerTo";
-            this.dtPickerTo.Size = new System.Drawing.Size(200, 20);
-            this.dtPickerTo.TabIndex = 11;
+            this.dtpTo.Location = new System.Drawing.Point(374, 70);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(200, 20);
+            this.dtpTo.TabIndex = 11;
             // 
             // lblFrom
             // 
@@ -195,12 +195,12 @@
             this.blSaveLoc.TabIndex = 14;
             this.blSaveLoc.Text = "Save Location:";
             // 
-            // tboSaveLoc
+            // txtFileBooking
             // 
-            this.tboSaveLoc.Location = new System.Drawing.Point(98, 23);
-            this.tboSaveLoc.Name = "tboSaveLoc";
-            this.tboSaveLoc.Size = new System.Drawing.Size(336, 20);
-            this.tboSaveLoc.TabIndex = 15;
+            this.txtFileBooking.Location = new System.Drawing.Point(98, 23);
+            this.txtFileBooking.Name = "txtFileBooking";
+            this.txtFileBooking.Size = new System.Drawing.Size(336, 20);
+            this.txtFileBooking.TabIndex = 15;
             // 
             // btnBrowse
             // 
@@ -210,6 +210,7 @@
             this.btnBrowse.TabIndex = 16;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // btnExport
             // 
@@ -239,12 +240,12 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.tboSaveLoc);
+            this.Controls.Add(this.txtFileBooking);
             this.Controls.Add(this.blSaveLoc);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
-            this.Controls.Add(this.dtPickerTo);
-            this.Controls.Add(this.dtPickerFrom);
+            this.Controls.Add(this.dtpTo);
+            this.Controls.Add(this.dtpFrom);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtFileSession);
@@ -278,13 +279,13 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.DateTimePicker dtPickerTo;
-        private System.Windows.Forms.DateTimePicker dtPickerFrom;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label blSaveLoc;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox tboSaveLoc;
+        private System.Windows.Forms.TextBox txtFileBooking;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnExport;
     }

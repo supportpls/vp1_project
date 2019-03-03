@@ -160,5 +160,25 @@ namespace GalaxyCinemas
         {
             this.Dispose();
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            // Opens a dialog to pick a file to import.
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result != System.Windows.Forms.DialogResult.OK)
+                return;
+
+            // Checks that the file is valid.
+            try
+            {
+                TextReader tr = File.OpenText(saveFileDialog.FileName);
+                txtFileBooking.Text = saveFileDialog.FileName;
+                tr.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error opening file");
+            }
+        }
     }
 }
