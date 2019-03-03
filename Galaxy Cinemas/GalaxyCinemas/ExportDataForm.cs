@@ -150,5 +150,15 @@ namespace GalaxyCinemas
         }
 
         #endregion
+
+        private void ExportDataForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

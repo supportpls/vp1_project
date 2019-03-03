@@ -41,6 +41,15 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dtPickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtPickerTo = new System.Windows.Forms.DateTimePicker();
+            this.lblFrom = new System.Windows.Forms.Label();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.blSaveLoc = new System.Windows.Forms.Label();
+            this.tboSaveLoc = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,12 +154,97 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // dtPickerFrom
+            // 
+            this.dtPickerFrom.Location = new System.Drawing.Point(58, 70);
+            this.dtPickerFrom.Name = "dtPickerFrom";
+            this.dtPickerFrom.Size = new System.Drawing.Size(200, 20);
+            this.dtPickerFrom.TabIndex = 10;
+            // 
+            // dtPickerTo
+            // 
+            this.dtPickerTo.Location = new System.Drawing.Point(374, 70);
+            this.dtPickerTo.Name = "dtPickerTo";
+            this.dtPickerTo.Size = new System.Drawing.Size(200, 20);
+            this.dtPickerTo.TabIndex = 11;
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.Location = new System.Drawing.Point(12, 70);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(33, 13);
+            this.lblFrom.TabIndex = 12;
+            this.lblFrom.Text = "From:";
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Location = new System.Drawing.Point(324, 70);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(23, 13);
+            this.lblTo.TabIndex = 13;
+            this.lblTo.Text = "To:";
+            // 
+            // blSaveLoc
+            // 
+            this.blSaveLoc.AutoSize = true;
+            this.blSaveLoc.Location = new System.Drawing.Point(12, 23);
+            this.blSaveLoc.Name = "blSaveLoc";
+            this.blSaveLoc.Size = new System.Drawing.Size(79, 13);
+            this.blSaveLoc.TabIndex = 14;
+            this.blSaveLoc.Text = "Save Location:";
+            // 
+            // tboSaveLoc
+            // 
+            this.tboSaveLoc.Location = new System.Drawing.Point(98, 23);
+            this.tboSaveLoc.Name = "tboSaveLoc";
+            this.tboSaveLoc.Size = new System.Drawing.Size(336, 20);
+            this.tboSaveLoc.TabIndex = 15;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(455, 19);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(119, 23);
+            this.btnBrowse.TabIndex = 16;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(15, 139);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(119, 23);
+            this.btnExport.TabIndex = 17;
+            this.btnExport.Text = "Export Bookings";
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(455, 139);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(119, 23);
+            this.btnExit.TabIndex = 18;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // ExportDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(612, 185);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.tboSaveLoc);
+            this.Controls.Add(this.blSaveLoc);
+            this.Controls.Add(this.lblTo);
+            this.Controls.Add(this.lblFrom);
+            this.Controls.Add(this.dtPickerTo);
+            this.Controls.Add(this.dtPickerFrom);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtFileSession);
@@ -163,6 +257,7 @@
             this.Controls.Add(this.btnSelectExportMovies);
             this.Name = "ExportDataForm";
             this.Text = "Export Data";
+            this.Load += new System.EventHandler(this.ExportDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,5 +278,14 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DateTimePicker dtPickerTo;
+        private System.Windows.Forms.DateTimePicker dtPickerFrom;
+        private System.Windows.Forms.Label blSaveLoc;
+        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.TextBox tboSaveLoc;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnExport;
     }
 }
