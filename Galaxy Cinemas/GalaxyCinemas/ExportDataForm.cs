@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using Common;
 
 namespace GalaxyCinemas
 {
@@ -22,13 +23,24 @@ namespace GalaxyCinemas
         /// <param name="e"></param>
         private void btnSelectExportBooking_Click(object sender, EventArgs e)
         {
-            
-
-
-
-
             txtFileBooking.Focus(); // Set focus on this field. Moving focus will force validation of the value.
-        }
+			if (IsFormValid () == false) {
+				return;
+			}
+			DateTime dtFrom = dtpFrom.Value.ToShortDateString ();
+			DateTime dtTo = dtpTo.Value.ToShortDateString ();
+		
+			try{
+				List<Booking> list = DataLayer.DataLayer.GetBookingsInDateRange(dtFrom,dtTo);
+			}
+			catch  (Exception){
+				MessageBox.Show(this, "Error exporting list of bookings", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+			}
+			Serialise (list, txtFileBooking.Text);
+
+
+		}
 
         /// <summary>
         /// Export bookings to XML file.
@@ -56,23 +68,13 @@ namespace GalaxyCinemas
         /// Serialize bookings to XML file.
         /// </summary>
         /// <param name="list"></param>
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /// <summary>
+		private void Serialise (List<Booking> list, String filename){
+			XmlSerializer serializer = new XmlSerializer (typeof(List<Booking>));
+			TextWriter textWriter = new StreamWriter(filename);
+			serializer.Serialize(textWriter, list);
+			textWriter.Close();
+			}
+		/// <summary>
         /// Closes the form and goes back to main menu.
         /// </summary>
         /// <param name="sender"></param>
@@ -164,21 +166,20 @@ namespace GalaxyCinemas
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             // Opens a dialog to pick a file to import.
-            DialogResult result = saveFileDialog.ShowDialog();
-            if (result != System.Windows.Forms.DialogResult.OK)
-                return;
-
-            // Checks that the file is valid.
-            try
-            {
-                TextReader tr = File.OpenText(saveFileDialog.FileName);
-                txtFileBooking.Text = saveFileDialog.FileName;
-                tr.Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error opening file");
-            }
-        }
+			SaveFileDialog saveFileDialog = new SaveFileDialog(); 
+            
+			saveFileDialog.InitialDirectory = @"C:\";
+			saveFileDialog.Title = "Export .csv File for bookings";
+			saveFileDialog.CheckFileExists = true;
+			saveFileDialog.CheckPathExists = true;
+			saveFileDialog.DefaultExt = "csv";
+			saveFileDialog.Filter = "Csv files (*.csv)|*.csv|All files (*.*)|*.*";
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				txtFileBooking.Text = saveFileDialog.FileName;
+			}
+			txtFileBooking.Focus(); // Set focus on this field. Moving focus will force validation of the value.
+		
+		}
     }
 }
