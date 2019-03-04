@@ -36,6 +36,10 @@
             this.txtMovieFileName = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSelectSessionFile = new System.Windows.Forms.Button();
+            this.txtSessionFileName = new System.Windows.Forms.TextBox();
+            this.btnSessionImportStart = new System.Windows.Forms.Button();
+            this.btnSessionImportStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +96,55 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // btnSelectSessionFile
+            // 
+            this.btnSelectSessionFile.CausesValidation = false;
+            this.btnSelectSessionFile.Location = new System.Drawing.Point(13, 111);
+            this.btnSelectSessionFile.Name = "btnSelectSessionFile";
+            this.btnSelectSessionFile.Size = new System.Drawing.Size(152, 23);
+            this.btnSelectSessionFile.TabIndex = 6;
+            this.btnSelectSessionFile.Text = "Select Session File";
+            this.btnSelectSessionFile.UseVisualStyleBackColor = true;
+            this.btnSelectSessionFile.Click += new System.EventHandler(this.btnSelectSessionFile_Click);
+            // 
+            // txtSessionFileName
+            // 
+            this.txtSessionFileName.Location = new System.Drawing.Point(12, 140);
+            this.txtSessionFileName.Name = "txtSessionFileName";
+            this.txtSessionFileName.Size = new System.Drawing.Size(322, 20);
+            this.txtSessionFileName.TabIndex = 7;
+            // 
+            // btnSessionImportStart
+            // 
+            this.btnSessionImportStart.Location = new System.Drawing.Point(13, 178);
+            this.btnSessionImportStart.Name = "btnSessionImportStart";
+            this.btnSessionImportStart.Size = new System.Drawing.Size(75, 23);
+            this.btnSessionImportStart.TabIndex = 8;
+            this.btnSessionImportStart.Text = "Import";
+            this.btnSessionImportStart.UseVisualStyleBackColor = true;
+            this.btnSessionImportStart.Click += new System.EventHandler(this.btnSessionImportStart_Click);
+            // 
+            // btnSessionImportStop
+            // 
+            this.btnSessionImportStop.CausesValidation = false;
+            this.btnSessionImportStop.Location = new System.Drawing.Point(13, 178);
+            this.btnSessionImportStop.Name = "btnSessionImportStop";
+            this.btnSessionImportStop.Size = new System.Drawing.Size(75, 23);
+            this.btnSessionImportStop.TabIndex = 9;
+            this.btnSessionImportStop.Text = "Stop";
+            this.btnSessionImportStop.UseVisualStyleBackColor = true;
+            this.btnSessionImportStop.Visible = false;
+            this.btnSessionImportStop.Click += new System.EventHandler(this.btnSessionImportStop_Click);
+            // 
             // ImportDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 401);
+            this.Controls.Add(this.btnSessionImportStop);
+            this.Controls.Add(this.btnSessionImportStart);
+            this.Controls.Add(this.txtSessionFileName);
+            this.Controls.Add(this.btnSelectSessionFile);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.txtMovieFileName);
             this.Controls.Add(this.btnSelectMovieFile);
@@ -119,5 +167,9 @@
         private System.Windows.Forms.TextBox txtMovieFileName;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button btnSelectSessionFile;
+        private System.Windows.Forms.TextBox txtSessionFileName;
+        private System.Windows.Forms.Button btnSessionImportStop;
+        private System.Windows.Forms.Button btnSessionImportStart;
     }
 }

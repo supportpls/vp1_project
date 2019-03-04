@@ -10,10 +10,10 @@ namespace Common
 		public byte CinemaNumber { set; get;}
 
 		public String ShortFormat 
-		{
-			get 
-			{
-				string.Format ("{0:HH:mm}-Cinema {1}", SessionDate, CinemaNumber);
+		{ 
+			get
+            {
+			 return	string.Format ("{0:HH:mm}-Cinema {1}", SessionDate, CinemaNumber);
 			}
 		}
 

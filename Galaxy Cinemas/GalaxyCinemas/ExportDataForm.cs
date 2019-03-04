@@ -27,11 +27,14 @@ namespace GalaxyCinemas
 			if (IsFormValid () == false) {
 				return;
 			}
-			DateTime dtFrom = dtpFrom.Value.ToShortDateString ();
-			DateTime dtTo = dtpTo.Value.ToShortDateString ();
-		
-			try{
-				List<Booking> list = DataLayer.DataLayer.GetBookingsInDateRange(dtFrom,dtTo);
+			DateTime dtFrom = dtpFrom.Value;
+			DateTime dtTo = dtpTo.Value;
+
+            List<Booking> list = new List<Booking>();
+
+            try
+            {
+				list = DataLayer.DataLayer.GetBookingsInDateRange(dtFrom,dtTo);
 			}
 			catch  (Exception){
 				MessageBox.Show(this, "Error exporting list of bookings", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

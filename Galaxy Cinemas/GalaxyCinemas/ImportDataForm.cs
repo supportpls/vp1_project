@@ -104,7 +104,22 @@ namespace GalaxyCinemas
 
         #region Session importer
 
-        
+        private void SessionImportFinished(object sender, CompletedEventArgs args)
+        {
+            ImportResult result = args.Result;
+            sessionImporter = null;
+            Invoke((Action)(() =>
+            {
+                btnSessionImportStart.Visible = true;
+                btnSessionImportStop.Visible = false;
+                progressBar.Visible = false;
+
+                ImportResultsPopup popup = new ImportResultsPopup(result);
+                popup.ShowDialog();
+            }));
+        }
+
+
 
         #endregion
 
@@ -173,5 +188,59 @@ namespace GalaxyCinemas
         }
 
         #endregion
+
+        private void btnSelectSessionFile_Click(object sender, EventArgs e)
+        {
+            // Opens a dialog to pick a file to import.
+            DialogResult result = opnFileDialog.ShowDialog();
+            if (result != System.Windows.Forms.DialogResult.OK)
+                return;
+
+            // Checks that the file is valid.
+            try
+            {
+                TextReader tr = File.OpenText(opnFileDialog.FileName);
+                txtSessionFileName.Text = opnFileDialog.FileName;
+                tr.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error opening file");
+            }
+        }
+
+        private void btnSessionImportStart_Click(object sender, EventArgs e)
+        {
+            // Validate the movie filename.
+            blockSubmitIfValidationFails = true;
+            try
+            {
+                txtSessionFileName.Focus();
+                if (!Validate())
+                    return;
+            }
+            finally
+            {
+                blockSubmitIfValidationFails = false;
+            }
+
+            // Do UI changes, e.g. hide Start button, show Stop button, start progress bar.
+            btnSessionImportStart.Visible = false;
+            btnSessionImportStop.Visible = true;
+            progressBar.Value = 0;
+            progressBar.Visible = true;
+
+            // Start importer in another thread.
+            sessionImporter = new SessionImporter(txtSessionFileName.Text);
+            sessionImporter.Completed += new CompletedEventHandler(MovieImportFinished);
+            sessionImporter.ProgressChanged += new ProgressChangedEventHandler(ProgressChanged);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(movieImporter.Import));
+        }
+
+        private void btnSessionImportStop_Click(object sender, EventArgs e)
+        {
+            // Sets a property on the movie importer, which will stop when next convenient.
+            sessionImporter.Stop = true;
+        }
     }
 }
