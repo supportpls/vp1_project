@@ -5,9 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Common;
-using Common.Business_Objects.Booking;
-using Common.Business_Objects.Movie;
-using Common.Business_Objects.Session;
 
 
 namespace GalaxyCinemas
@@ -70,7 +67,7 @@ namespace GalaxyCinemas
 
         private void btnBooking_Click(object sender, EventArgs e)
         {
-            BookingForm bf = new BookingForm();
+            BookingForm bf = new BookingForm(specialPlugins);
             bf.FormClosed += ChildFormClosed;
             bf.Show();
 
