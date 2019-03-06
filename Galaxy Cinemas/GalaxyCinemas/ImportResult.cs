@@ -26,7 +26,14 @@ namespace GalaxyCinemas
 			TotalRows = 0;
 			ImportedRows = 0;
 			FailedRows = 0;
-			errorMessages.Clear();
+            if (errorMessages != null)
+            {
+                errorMessages.Clear();
+            }
+            else
+            {
+                errorMessages = new List<String>();
+            }
 
 		}
     }

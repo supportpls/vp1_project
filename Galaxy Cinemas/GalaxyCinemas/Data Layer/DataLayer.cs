@@ -218,7 +218,7 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
                 conn.Open();
                 string sql = @"select SessionID, MovieID, SessionDate, CinemaNumber
                 from [Session]
-                where SessionID >= @sessionID";
+                where SessionID = @sessionID";
                 using (SqlCommand command = new SqlCommand(sql, conn))
                 {
                     command.Parameters.AddWithValue("sessionID", sessionID);
@@ -226,7 +226,7 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
 						if (reader.HasRows) {
-							session.SessionID = reader.GetInt32 (0);
+							session.SessionID = sessionID;
 							session.MovieID = reader.GetInt32 (1);
 							session.SessionDate = reader.GetDateTime (2);
 							session.CinemaNumber = reader.GetByte (3);

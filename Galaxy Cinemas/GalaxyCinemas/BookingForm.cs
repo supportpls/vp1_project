@@ -28,7 +28,7 @@ namespace GalaxyCinemas
             // Populate the movies dropdown with a list of movies.
             PopulateMovies();
             // Ensure the user can't select a date in the past.
-            dtpSessionDate.MinDate = DateTime.Today;
+            dtpSessionDate.MinDate = new DateTime(2014,1,1);
             this.FormClosing += BookingForm_FormClosing;
         }
 

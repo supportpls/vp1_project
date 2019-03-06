@@ -25,7 +25,7 @@ namespace GalaxyCinemas
                 {
                     string name = Path.GetFileNameWithoutExtension(file.Name);
 
-                    Assembly assembly = Assembly.Load("name");
+                    Assembly assembly = Assembly.Load(name);
 
                     var plugins = from type in assembly.GetTypes()
                                   where typeof(ISpecialPlugin).IsAssignableFrom(type) && !type.IsInterface
@@ -38,9 +38,9 @@ namespace GalaxyCinemas
                     }
                                                                                                           }
             }
-            catch (Exception)
+            catch (Exception pluginE)
             {
-                MessageBox.Show(this, "Error in loading of special plugins", "Init Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, pluginE.ToString(), "Init Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
