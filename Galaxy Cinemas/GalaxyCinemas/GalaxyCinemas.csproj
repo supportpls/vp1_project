@@ -139,7 +139,6 @@
     <Compile Include="ImportDataForm.Designer.cs">
       <DependentUpon>ImportDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Common\Business_Objects\Booking.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GalaxyCinemas.accdb">

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using Common;
+using Common.Business_Objects;
 
 namespace GalaxyCinemas
 {
@@ -46,7 +47,7 @@ namespace GalaxyCinemas
 				int lineCount = lines.Length;
 				int lineNum = 1;
                 // Get all movies.
-				List<Common.Movie> movies= DataLayer.GetAllMovies();
+				List<Movie> movies= DataLayer.DataLayer.GetAllMovies();
 
                 foreach (string line in lines)
                 {

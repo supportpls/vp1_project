@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common
+namespace Common.Business_Objects
 {
 	public class Movie
 	{

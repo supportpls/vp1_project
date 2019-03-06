@@ -15,3 +15,13 @@ C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCin
 C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.Properties.Resources.resources
 C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.csproj.GenerateResource.cache
 C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.csproj.CoreCompileInputs.cache
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\GalaxyCinemas.accdb
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\GalaxyCinemas.exe.config
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\GalaxyCinemas.exe
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\GalaxyCinemas.pdb
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\Common.dll
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\Common.pdb
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\Plugins.pdb
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.csproj.CopyComplete
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.exe
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\obj\x86\Debug\GalaxyCinemas.pdb

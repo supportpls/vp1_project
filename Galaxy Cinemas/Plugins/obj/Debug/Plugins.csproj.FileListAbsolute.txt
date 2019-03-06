@@ -1,2 +1,7 @@
 C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Plugins\obj\Debug\Plugins.csprojAssemblyReference.cache
 C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Plugins\obj\Debug\Plugins.csproj.CoreCompileInputs.cache
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\Plugins.dll
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\GalaxyCinemas\bin\Debug\Plugins.pdb
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Plugins\obj\Debug\Plugins.csproj.CopyComplete
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Plugins\obj\Debug\Plugins.dll
+C:\Users\Kiril Ikon\source\repos\supportpls\vp1_project\Galaxy Cinemas\Plugins\obj\Debug\Plugins.pdb

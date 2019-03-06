@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Common;
+using Common.Business_Objects;
 
 namespace GalaxyCinemas
 {

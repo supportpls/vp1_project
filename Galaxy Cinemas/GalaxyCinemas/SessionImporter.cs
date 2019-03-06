@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using Common;
+using Common.Business_Objects;
 
 namespace GalaxyCinemas
 {
@@ -115,7 +116,7 @@ namespace GalaxyCinemas
                         }
                         // Check cinema number.
                         byte cinemaNumber = 0;
-                        if (!byte.Parse(columns[4].Trim(), out cinemaNumber)){
+                        if (!byte.TryParse(columns[4].Trim(), out cinemaNumber)){
                             results.FailedRows++;
                             results.ErrorMessages.Add(string.Format("Line {0}: CinemaNumber is not a byte type.", lineNum));
                             continue;

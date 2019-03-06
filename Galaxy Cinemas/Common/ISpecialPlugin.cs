@@ -1,10 +1,11 @@
 ﻿using System;
+using Common.Business_Objects;
 
 namespace Common
 {
 	public interface ISpecialPlugin
 	{
-		Boolean CalculateSpecial (Booking inputBooking, ref string specialName, ref decimal specialPrice);
+		bool CalculateSpecial (Booking booking, ref string specialName, ref decimal specialPrice);
 
 	}
 }

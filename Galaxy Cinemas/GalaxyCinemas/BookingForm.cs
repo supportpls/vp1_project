@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Common.Business_Objects;
 using Common;
 
 namespace GalaxyCinemas
@@ -12,9 +13,7 @@ namespace GalaxyCinemas
         // Base ticket price used for calculations
         decimal BASETICKETPRICE = 14.0m;
         List<ISpecialPlugin> specialPlugins = new List<ISpecialPlugin>();
-        Booking booking = new Booking();
-
-       
+        Booking booking;
 
         public BookingForm(List<ISpecialPlugin> plugins)
         {
@@ -22,7 +21,7 @@ namespace GalaxyCinemas
             //booking = new Booking();
             // We are provided the loaded plugins from the main application because loading plugins using reflection is very expensive and should not be done often.
             specialPlugins = plugins;
-            /*booking = ;*/
+            booking = new Booking();
             InitializeComponent();
                   
             

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data;
 using Common;
+using Common.Business_Objects;
 
 namespace GalaxyCinemas.DataLayer
 {
