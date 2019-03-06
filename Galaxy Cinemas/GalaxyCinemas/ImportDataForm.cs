@@ -234,7 +234,7 @@ namespace GalaxyCinemas
             sessionImporter = new SessionImporter(txtSessionFileName.Text);
             sessionImporter.Completed += new CompletedEventHandler(MovieImportFinished);
             sessionImporter.ProgressChanged += new ProgressChangedEventHandler(ProgressChanged);
-            ThreadPool.QueueUserWorkItem(new WaitCallback(movieImporter.Import));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(sessionImporter.Import));
         }
 
         private void btnSessionImportStop_Click(object sender, EventArgs e)
