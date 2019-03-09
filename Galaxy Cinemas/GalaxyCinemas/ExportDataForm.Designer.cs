@@ -220,6 +220,7 @@
             this.btnExport.TabIndex = 17;
             this.btnExport.Text = "Export Bookings";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnSelectExportBooking_Click);
             // 
             // btnExit
             // 

@@ -150,7 +150,7 @@ namespace GalaxyCinemas
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace GalaxyCinemas
             
 			saveFileDialog.InitialDirectory = @"C:\";
 			saveFileDialog.Title = "Export .csv File for bookings";
-			saveFileDialog.CheckFileExists = true;
+			saveFileDialog.CheckFileExists = false;
 			saveFileDialog.CheckPathExists = true;
 			saveFileDialog.DefaultExt = "csv";
 			saveFileDialog.Filter = "Csv files (*.csv)|*.csv|All files (*.*)|*.*";

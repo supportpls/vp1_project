@@ -263,7 +263,7 @@ namespace GalaxyCinemas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
