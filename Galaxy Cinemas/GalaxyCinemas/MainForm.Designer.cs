@@ -81,7 +81,7 @@
             this.btnExportForm.Name = "btnExportForm";
             this.btnExportForm.Size = new System.Drawing.Size(231, 23);
             this.btnExportForm.TabIndex = 7;
-            this.btnExportForm.Text = "Export Movies and Sessions";
+            this.btnExportForm.Text = "Export Bookings";
             this.btnExportForm.UseVisualStyleBackColor = true;
             this.btnExportForm.Click += new System.EventHandler(this.btnExportForm_Click);
             // 

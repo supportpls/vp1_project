@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Data;
 using Common;
 using Common.Business_Objects;
+using System.Windows.Forms;
 
 namespace GalaxyCinemas.DataLayer
 {
@@ -44,6 +45,7 @@ namespace GalaxyCinemas.DataLayer
                     {
                        while (reader.Read())
                         {
+                            MessageBox.Show(reader.ToString(), "GetAllMovies");
                             Movie movie = new Movie();
                             movie.MovieID = reader.GetInt32(0);
                             movie.Title = reader.GetString(1);
@@ -77,7 +79,9 @@ where [Session].SessionDate >= @startdate and [Session].SessionDate < @enddate";
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
+
                         {
+                            MessageBox.Show(reader.ToString(), "GetBookingsInDateRange");
                             Booking booking = new Booking();
                             booking.BookingNumber = reader.GetInt32(0);
                             booking.SessionID = reader.GetInt32(1);
@@ -157,6 +161,8 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
                     {
                         while (reader.Read())
                         {
+
+                            MessageBox.Show(reader.ToString(), "GetAllSessionsForMovie");
                             Session session = new Session();
                             session.SessionID = reader.GetInt32(0);
                             session.MovieID = reader.GetInt32(1);
@@ -193,6 +199,7 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
                     {
                         while (reader.Read())
                         {
+                            MessageBox.Show(reader.ToString(), "GetAllSessionsInTheFuture");
                             Session session = new Session();
                             session.SessionID = reader.GetInt32(0);
                             session.MovieID = reader.GetInt32(1);
@@ -226,12 +233,17 @@ where MovieID = @movieID and SessionDate >= @startDate and SessionDate < @endDat
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
 						if (reader.HasRows) {
-							session.SessionID = sessionID;
-							session.MovieID = reader.GetInt32 (1);
-							session.SessionDate = reader.GetDateTime (2);
-							session.CinemaNumber = reader.GetByte (3);
-							return session;
-						} 
+                            while (reader.Read())
+                            {
+                                MessageBox.Show(reader.ToString(), "GetSessionByID");
+                                session.SessionID = sessionID;
+                                session.MovieID = reader.GetInt32(1);
+                                session.SessionDate = reader.GetDateTime(2);
+                                session.CinemaNumber = reader.GetByte(3);
+                                
+                            }
+                            return session;
+                        } 
 						else
 						{
 							return null;						
